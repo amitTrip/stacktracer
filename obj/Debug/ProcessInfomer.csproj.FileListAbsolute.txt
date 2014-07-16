@@ -1,0 +1,8 @@
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\bin\Debug\ProcessInfomer.exe.config
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\obj\Debug\ProcessInfomer.csprojResolveAssemblyReference.cache
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\bin\Debug\ProcessInfomer.exe
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\bin\Debug\ProcessInfomer.pdb
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\obj\Debug\ProcessInfomer.exe
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\obj\Debug\ProcessInfomer.pdb
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\bin\Debug\Microsoft.Diagnostics.Runtime.dll
+c:\users\amtripat\documents\visual studio 2013\Projects\ProcessInfomer\ProcessInfomer\bin\Debug\Microsoft.Diagnostics.Runtime.xml
