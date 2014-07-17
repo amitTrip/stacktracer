@@ -19,16 +19,18 @@ namespace ProcessInfomer
         }
         public string processName { get; set; }
         public int threadCount { get; set; }
-        public List<StackTracerThread> processThreadlist { get; set; }
+        
+        public List<StackTrace> processThreadlist { get; set; }
 
     }
-    public class StackTracerThread
+    
+    public class StackTrace
     {
-         public StackTracerThread()
+         public StackTrace()
         {
 
         }
-        public StackTracerThread(DateTime stackCaptureTime, List<StackTraceNode> stackTrace)
+        public StackTrace(DateTime stackCaptureTime, List<StackTraceNode> stackTrace)
         {
 
             this.stackCaptureTime = stackCaptureTime;
@@ -64,20 +66,82 @@ namespace ProcessInfomer
     {
         static void Main(string[] args)
         {
-            int pid = Process.GetProcessesByName("w3wp")[0].Id;
+            int pid = -1;
             // Custom Process Object
-            
-
-            ProcessThreadCollection stackTracerProcessobj = new ProcessThreadCollection();
-            stackTracerProcessobj.processThreadlist = new List<StackTracerThread>();
-
-
-            for (int i = 0; i < 3; i++)
+            string processName = "";
+            int Pid = -1;
+            int delay = 500;
+            int stackTraceCount = 5;
+            string stacktraceLocation = null;
+                   
+            // Getting the parameters inatilized 
+            try
             {
 
-                Console.WriteLine("ProcessId" + pid);
-                using (DataTarget dataTarget = DataTarget.AttachToProcess(pid, 5000))
+                 Pid = int.Parse(args[0]);
+            }
+            catch
+            {
+                if (args[0] != null && args[0].Length != 0)
+                    processName = args[0];
+                else
                 {
+                    processName = "w3wp";
+
+                    Console.WriteLine("The switch for process is not provided using [w3wp] as default process name");
+                }
+            }
+
+            try
+            {
+
+                delay = int.Parse(args[1]);
+            }
+            catch
+            {
+                Console.WriteLine("The switch for delay to capture stack trace is not provided using 500MS  as default");
+            }
+
+            try
+            {
+
+                stackTraceCount = int.Parse(args[2]);
+            }
+            catch
+            {
+                Console.WriteLine("The switch for stacktrace counts is not provided using 4 traces as default");
+            }
+            try
+            {
+                if (args[3] != null && args[3].Length != 0)
+                 stacktraceLocation = args[3];
+            }
+            catch
+            {
+                Console.WriteLine("The switch for stacktrace location is not provided using {0} as default location", stacktraceLocation);
+            }
+
+            Console.WriteLine("the pid is {0} and the duration is {1}  stacktrace count is  {2} and stack trace location is {3}", processName, delay, stackTraceCount,stacktraceLocation);
+           
+            if ( processName == "" )
+            pid = Pid;
+            pid = Process.GetProcessesByName(processName)[0].Id;
+
+            Console.WriteLine("the selected pid for the process {0} is  {1}", processName,pid);
+
+            
+            ProcessThreadCollection stackTracerProcessobj = new ProcessThreadCollection();
+            stackTracerProcessobj.processThreadlist = new List<StackTrace>();
+
+
+            for (int i = 0; i < stackTraceCount; i++)
+            {
+                
+                Console.WriteLine("ProcessId" + pid);
+                using (DataTarget dataTarget = DataTarget.AttachToProcess(pid, 5000,AttachFlag.Invasive))
+                {
+                    
+
                     string dacLocation = dataTarget.ClrVersions[0].TryGetDacLocation();
                     ClrRuntime runtime = dataTarget.CreateRuntime(dacLocation);
 
@@ -100,7 +164,7 @@ namespace ProcessInfomer
                     
                    foreach (ClrThread crlThreadObj in runtime.Threads)
                     {
-                        StackTracerThread stackTracerThreadObj = new StackTracerThread();
+                        StackTrace stackTracerThreadObj = new StackTrace();
 
                         List<StackTraceNode> tracerStackThread = new List<StackTraceNode>();
 
@@ -122,41 +186,24 @@ namespace ProcessInfomer
                         stackTracerProcessobj.processThreadlist.Add(stackTracerThreadObj);
 
                     }
-
-
+                    if(string.IsNullOrEmpty(stacktraceLocation))
+                       stacktraceLocation= Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),  DateTime.Now.Ticks + ".xml");
+                    
                     Console.WriteLine("Hit Enter to dereliaze the object");
                    // Console.Read();
                     // serelizing the result for the runtime to look into the full object
                     XmlSerializer serializer = new XmlSerializer(typeof(ProcessThreadCollection));
-                    using (TextWriter writer = new StreamWriter(@"D:\Stack" + DateTime.Now.Ticks + ".xml"))
+                    using (TextWriter writer = new StreamWriter(stacktraceLocation))
                     {
                         serializer.Serialize(writer, stackTracerProcessobj);
-
                     }
                     Console.WriteLine("serelization done ");
 
-                  //  Console.Read();
-
-                     //Itearing the heap for process -- need to find its imprtance
-
-                    ClrHeap heap = runtime.GetHeap();
-                    var stats = from o in heap.EnumerateObjects()
-                                let t = heap.GetObjectType(o)
-                                group o by t into g
-                                let size = g.Sum(o => (uint)g.Key.GetSize(o))
-                                orderby size
-                                select new
-                                {
-                                    Name = g.Key.Name,
-                                    Size = size,
-                                    Count = g.Count()
-                                };
-
-                    foreach (var item in stats)
-                        Console.WriteLine("{0,12:n0} {1,12:n0} {2}", item.Size, item.Count, item.Name);
-                  //  Console.Read();
+                  
 
                 }
+
+                System.Threading.Thread.Sleep(delay);
             }
             Console.Read();
         }
