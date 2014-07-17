@@ -1,0 +1,7 @@
+D:\github\stacktracer\bin\Debug\ProcessInfomer.exe.config
+D:\github\stacktracer\obj\Debug\ProcessInfomer.exe
+D:\github\stacktracer\obj\Debug\ProcessInfomer.pdb
+D:\github\stacktracer\bin\Debug\ProcessInfomer.exe
+D:\github\stacktracer\bin\Debug\ProcessInfomer.pdb
+D:\github\stacktracer\bin\Debug\Microsoft.Diagnostics.Runtime.xml
+D:\github\stacktracer\obj\Debug\StackTracer.csprojResolveAssemblyReference.cache
