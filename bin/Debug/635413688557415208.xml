@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackTracer xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <processName>w3wp</processName>
+  <processID>13896</processID>
+  <sampleCollection>
+    <StackSample>
+      <sampleCounter>0</sampleCounter>
+      <samplingTime>2014-07-19T06:43:54.8894202Z</samplingTime>
+      <threadCount>20</threadCount>
+      <processThreadCollection>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>1</managedThreadId>
+          <oSID>10884</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>2014-07-19T06:43:55.0494286Z</sampleCaptureTime>
+          <managedThreadId>2</managedThreadId>
+          <oSID>19092</oSID>
+          <stackTrace>
+            <StackElements>
+              <stackTraceString>DebuggerU2MCatchHandlerFrame</stackTraceString>
+              <instructionPointer>0</instructionPointer>
+              <clrMethodString>NULL</clrMethodString>
+              <stackPointer>927930316744</stackPointer>
+            </StackElements>
+          </stackTrace>
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>3</managedThreadId>
+          <oSID>11948</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>4</managedThreadId>
+          <oSID>1036</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>6</managedThreadId>
+          <oSID>16496</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>7</managedThreadId>
+          <oSID>15844</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>8</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>5</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>9</managedThreadId>
+          <oSID>19320</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>10</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>11</managedThreadId>
+          <oSID>4224</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>12</managedThreadId>
+          <oSID>3396</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>13</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>14</managedThreadId>
+          <oSID>13592</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>15</managedThreadId>
+          <oSID>13424</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>16</managedThreadId>
+          <oSID>2528</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>17</managedThreadId>
+          <oSID>11600</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>18</managedThreadId>
+          <oSID>16736</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>19</managedThreadId>
+          <oSID>15448</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>20</managedThreadId>
+          <oSID>6568</oSID>
+          <stackTrace />
+        </Thread>
+      </processThreadCollection>
+    </StackSample>
+    <StackSample>
+      <sampleCounter>1</sampleCounter>
+      <samplingTime>2014-07-19T06:44:00.0867492Z</samplingTime>
+      <threadCount>20</threadCount>
+      <processThreadCollection>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>1</managedThreadId>
+          <oSID>10884</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>2014-07-19T06:44:00.2627071Z</sampleCaptureTime>
+          <managedThreadId>2</managedThreadId>
+          <oSID>19092</oSID>
+          <stackTrace>
+            <StackElements>
+              <stackTraceString>DebuggerU2MCatchHandlerFrame</stackTraceString>
+              <instructionPointer>0</instructionPointer>
+              <clrMethodString>NULL</clrMethodString>
+              <stackPointer>927930316744</stackPointer>
+            </StackElements>
+          </stackTrace>
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>3</managedThreadId>
+          <oSID>11948</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>4</managedThreadId>
+          <oSID>1036</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>6</managedThreadId>
+          <oSID>16496</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>7</managedThreadId>
+          <oSID>15844</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>8</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>5</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>9</managedThreadId>
+          <oSID>19320</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>10</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>11</managedThreadId>
+          <oSID>4224</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>12</managedThreadId>
+          <oSID>3396</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>13</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>14</managedThreadId>
+          <oSID>13592</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>15</managedThreadId>
+          <oSID>13424</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>16</managedThreadId>
+          <oSID>2528</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>17</managedThreadId>
+          <oSID>11600</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>18</managedThreadId>
+          <oSID>16736</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>19</managedThreadId>
+          <oSID>15448</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>20</managedThreadId>
+          <oSID>6568</oSID>
+          <stackTrace />
+        </Thread>
+      </processThreadCollection>
+    </StackSample>
+    <StackSample>
+      <sampleCounter>2</sampleCounter>
+      <samplingTime>2014-07-19T06:44:05.2930368Z</samplingTime>
+      <threadCount>20</threadCount>
+      <processThreadCollection>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>1</managedThreadId>
+          <oSID>10884</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>2014-07-19T06:44:05.447978Z</sampleCaptureTime>
+          <managedThreadId>2</managedThreadId>
+          <oSID>19092</oSID>
+          <stackTrace>
+            <StackElements>
+              <stackTraceString>DebuggerU2MCatchHandlerFrame</stackTraceString>
+              <instructionPointer>0</instructionPointer>
+              <clrMethodString>NULL</clrMethodString>
+              <stackPointer>927930316744</stackPointer>
+            </StackElements>
+          </stackTrace>
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>3</managedThreadId>
+          <oSID>11948</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>4</managedThreadId>
+          <oSID>1036</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>6</managedThreadId>
+          <oSID>16496</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>7</managedThreadId>
+          <oSID>15844</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>8</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>5</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>9</managedThreadId>
+          <oSID>19320</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>10</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>11</managedThreadId>
+          <oSID>4224</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>12</managedThreadId>
+          <oSID>3396</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>13</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>14</managedThreadId>
+          <oSID>13592</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>15</managedThreadId>
+          <oSID>13424</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>16</managedThreadId>
+          <oSID>2528</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>17</managedThreadId>
+          <oSID>11600</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>18</managedThreadId>
+          <oSID>16736</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>19</managedThreadId>
+          <oSID>15448</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>20</managedThreadId>
+          <oSID>6568</oSID>
+          <stackTrace />
+        </Thread>
+      </processThreadCollection>
+    </StackSample>
+    <StackSample>
+      <sampleCounter>3</sampleCounter>
+      <samplingTime>2014-07-19T06:44:10.4803001Z</samplingTime>
+      <threadCount>20</threadCount>
+      <processThreadCollection>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>1</managedThreadId>
+          <oSID>10884</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>2014-07-19T06:44:10.7082643Z</sampleCaptureTime>
+          <managedThreadId>2</managedThreadId>
+          <oSID>19092</oSID>
+          <stackTrace>
+            <StackElements>
+              <stackTraceString>DebuggerU2MCatchHandlerFrame</stackTraceString>
+              <instructionPointer>0</instructionPointer>
+              <clrMethodString>NULL</clrMethodString>
+              <stackPointer>927930316744</stackPointer>
+            </StackElements>
+          </stackTrace>
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>3</managedThreadId>
+          <oSID>11948</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>4</managedThreadId>
+          <oSID>1036</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>6</managedThreadId>
+          <oSID>16496</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>7</managedThreadId>
+          <oSID>15844</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>8</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>5</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>9</managedThreadId>
+          <oSID>19320</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>10</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>11</managedThreadId>
+          <oSID>4224</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>12</managedThreadId>
+          <oSID>3396</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>13</managedThreadId>
+          <oSID>0</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>14</managedThreadId>
+          <oSID>13592</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>15</managedThreadId>
+          <oSID>13424</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>16</managedThreadId>
+          <oSID>2528</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>17</managedThreadId>
+          <oSID>11600</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>18</managedThreadId>
+          <oSID>16736</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>19</managedThreadId>
+          <oSID>15448</oSID>
+          <stackTrace />
+        </Thread>
+        <Thread>
+          <sampleCaptureTime>0001-01-01T00:00:00</sampleCaptureTime>
+          <managedThreadId>20</managedThreadId>
+          <oSID>6568</oSID>
+          <stackTrace />
+        </Thread>
+      </processThreadCollection>
+    </StackSample>
+  </sampleCollection>
+</StackTracer>
