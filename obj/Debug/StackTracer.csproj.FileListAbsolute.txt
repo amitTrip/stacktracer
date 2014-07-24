@@ -4,3 +4,5 @@ D:\github\stacktracer\bin\Debug\ProcessInfomer.pdb
 D:\github\stacktracer\obj\Debug\StackTracer.csprojResolveAssemblyReference.cache
 D:\github\stacktracer\obj\Debug\ProcessInfomer.exe
 D:\github\stacktracer\obj\Debug\ProcessInfomer.pdb
+D:\github\stacktracer\obj\Debug\ProcessInfomer.Properties.Resources.resources
+D:\github\stacktracer\obj\Debug\StackTracer.csproj.GenerateResource.Cache

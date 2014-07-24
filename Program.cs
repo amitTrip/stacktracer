@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Diagnostics.Runtime;
 using System.Xml.Serialization;
 using System.IO;
+using System.Xml;
 
 namespace ProcessInfomer
 { 
@@ -30,15 +31,13 @@ namespace ProcessInfomer
         public DateTime samplingTime { get; set; }
         public int threadCount { get; set; }
         public List<Thread> processThreadCollection { get; set; }
-
     }   
     public class Thread
     {
          public Thread()
         {
-
         }
-        public Thread(DateTime stackCaptureTime, List<StackElements> stackTrace)
+        public Thread(DateTime stackCaptureTime, List<StackFrame> stackTrace)
         {
             this.sampleCaptureTime = stackCaptureTime;
             this.stackTrace = stackTrace;
@@ -46,16 +45,15 @@ namespace ProcessInfomer
         public DateTime sampleCaptureTime { get; set; }
         public int managedThreadId { get; set; }
         public uint oSID { get; set; }
-        public List<StackElements> stackTrace { get; set; }
-     
+        public List<StackFrame> stackTrace { get; set; }     
     }
-    public class StackElements
+    public class StackFrame
     {    
-        public StackElements()
+        public StackFrame()
         {
 
         }
-        public StackElements(string stackTraceString, ulong instructionPointer,string clrMethodString,ulong StackPointer )
+        public StackFrame(string stackTraceString, ulong instructionPointer,string clrMethodString,ulong StackPointer )
         {
            this.stackTraceString =   stackTraceString;
            this.instructionPointer =  instructionPointer;
@@ -66,9 +64,7 @@ namespace ProcessInfomer
         public ulong instructionPointer { get; set; }        
         // get this from clrmethod - GetFullSignature()
         public string clrMethodString { get; set; }
-        public ulong stackPointer { get; set; }   
-   
-        
+        public ulong stackPointer { get; set; }          
     }    
     class Program
     { 
@@ -132,27 +128,21 @@ namespace ProcessInfomer
                 }
 
                 #endregion
-
                 Console.WriteLine("the pid is {0} and the duration is {1}  stacktrace count is  {2} and stack trace location is {3}", processName, delay, stackTraceCount, stacktraceLocation);
-
                 if (processName == "")
                     pid = Pid;
                 pid = Process.GetProcessesByName(processName)[0].Id;
-
                 Console.WriteLine("the selected pid for the process {0} is  {1}", processName, pid);
-
                 StackTracer stackTracer = new StackTracer();
                 List<StackSample> stackSampleCollection = new List<StackSample>();
                 stackTracer.processName = Process.GetProcessById(pid).ProcessName;
                 stackTracer.processID = pid;
-
                 for (int i = 0; i < stackTraceCount; i++)
                 {
                     StackSample stackTracerProcessobj = new StackSample();
                     stackTracerProcessobj.processThreadCollection = new List<Thread>();
                     stackTracerProcessobj.sampleCounter = i;
                     stackTracerProcessobj.samplingTime = DateTime.UtcNow;
-
                     using (DataTarget dataTarget = DataTarget.AttachToProcess(pid, 5000, AttachFlag.Invasive))
                     {
                         string dacLocation = dataTarget.ClrVersions[0].TryGetDacLocation();
@@ -162,11 +152,10 @@ namespace ProcessInfomer
                         Console.WriteLine("There are  {0}  threads in the {1} process", runtime.Threads.Count, Process.GetProcessById(pid).ProcessName);
                         Console.WriteLine("=============================================================================================================");
                         Console.WriteLine();
-
                         foreach (ClrThread crlThreadObj in runtime.Threads)
                         {
                             Thread stackTracerThreadObj = new Thread();
-                            List<StackElements> tracerStackThread = new List<StackElements>();
+                            List<StackFrame> tracerStackThread = new List<StackFrame>();
                             IList<ClrStackFrame> Stackframe = crlThreadObj.StackTrace;
                             IEnumerable<ClrRoot> test = crlThreadObj.EnumerateStackObjects();
                             stackTracerThreadObj.oSID = crlThreadObj.OSThreadId;
@@ -178,18 +167,17 @@ namespace ProcessInfomer
                                 string tempClrMethod = "NULL";
                                 if (stackFrame.Method != null)
                                     tempClrMethod = stackFrame.Method.GetFullSignature();
-                                tracerStackThread.Add(new StackElements(stackFrame.DisplayString, stackFrame.InstructionPointer, tempClrMethod, stackFrame.StackPointer));
+                                tracerStackThread.Add(new StackFrame(stackFrame.DisplayString, stackFrame.InstructionPointer, tempClrMethod, stackFrame.StackPointer));
                                 Console.WriteLine("stack trace for thread- " + stackFrame.StackPointer + " -Stack String - " + stackFrame.DisplayString);
                             }
                             stackTracerThreadObj.stackTrace = tracerStackThread;
                             stackTracerProcessobj.processThreadCollection.Add(stackTracerThreadObj);
                         }
-                    }
-                    System.Threading.Thread.Sleep(delay);
+                    }                   
                     stackSampleCollection.Add(stackTracerProcessobj);
+                    System.Threading.Thread.Sleep(delay);
                 }
-                stackTracer.sampleCollection = stackSampleCollection;
-                
+                stackTracer.sampleCollection = stackSampleCollection;                
                 //if (string.IsNullOrEmpty(stacktraceLocation))
                 //    stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");
 
@@ -202,7 +190,6 @@ namespace ProcessInfomer
                 //    serializer.Serialize(writer, stackTracer);
                 //}
                 //Console.WriteLine("Serialization Complete ");
-
                 Type testype = stackTracer.GetType();
                 objectSeralizer(stacktraceLocation, testype, stackTracer);
                 Console.Read();
@@ -215,30 +202,31 @@ namespace ProcessInfomer
                    }
                 catch 
                 {
-
                 }
                Console.Read();
-            }
-           
+            }          
         }
 
        public static void objectSeralizer(String filePath, Type OjectType, object Object)
         {
             string  stacktraceLocation = filePath;
-            Type ClassToSerelaize = OjectType;
-            if (string.IsNullOrEmpty(stacktraceLocation))
-                stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");
-           
-           Console.WriteLine("Deseraliazing the object");
+                Type ClassToSerelaize = OjectType;
+                if (string.IsNullOrEmpty(stacktraceLocation))
+                stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");          
+                Console.WriteLine("Deseraliazing the object");
+                //Serelizing the result for the runtime to look into the full object
+                XmlSerializer serializer = new XmlSerializer(ClassToSerelaize);
+                using (XmlWriter writer = XmlWriter.Create(stacktraceLocation))
+                            {
+                                writer.WriteProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"stacktrace.xsl\"");
+                            serializer.Serialize(writer, Object);
+                            }            
+                            Console.WriteLine("Serialization Complete ");
 
-            //Serelizing the result for the runtime to look into the full object
-            XmlSerializer serializer = new XmlSerializer(ClassToSerelaize);
-            using (TextWriter writer = new StreamWriter(stacktraceLocation))
-            {
-                serializer.Serialize(writer, Object);
-            }            
-           Console.WriteLine("Serialization Complete ");
-        }      
-        
+                           
+        }              
     }
 }
+
+// Comments - Can store another resouces in the resources based on the bitness of the file.
+// 
