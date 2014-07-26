@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProcessInfomer.Properties {
+namespace StackTracer.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ProcessInfomer.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProcessInfomer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StackTracer.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace ProcessInfomer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:freb=&quot;http://schemas.microsoft.com/win/2006/06/iis/freb&quot; xmlns:ev=&quot;http://schemas.microsoft.com/win/2004/08/events/event&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:msxsl=&quot;urn:schemas-microsoft-com:xslt&quot; xmlns:jsext=&quot;urn:schemas-microsoft-com:jsext&quot; &gt;
         ///  &lt;xsl:output method=&quot;html&quot; media-type=&quot;text/html&quot; omit-xml-declaration=&quot;yes&quot; doctype-public=&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; docty [rest of string was truncated]&quot;;.
         /// </summary>

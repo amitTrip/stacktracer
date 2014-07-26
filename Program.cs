@@ -8,8 +8,9 @@ using Microsoft.Diagnostics.Runtime;
 using System.Xml.Serialization;
 using System.IO;
 using System.Xml;
+using System.Reflection;
 
-namespace ProcessInfomer
+namespace StackTracer
 { 
     public class StackTracer
     {
@@ -67,24 +68,87 @@ namespace ProcessInfomer
         public ulong stackPointer { get; set; }          
     }    
     class Program
-    { 
+    {
+        enum ParseState
+        {
+            Unknown, Samples, Interval
+        }
+
+        static void Usage()
+        {
+            Console.WriteLine("Usage: Stack Tracer : ProcessName|PID [options]");
+            Console.WriteLine();
+            Console.WriteLine("  /S     indicates how many samples of the stacks you have to take (default:10)");
+            Console.WriteLine("  /D     the interval between stack samples in milliseconds (default:1000)");
+            Console.WriteLine("");
+            Console.WriteLine("Example: stacktracer wpw3 /s 60 /d 500");
+            Console.WriteLine("         Take 60 samples once every 500 milliseconds");
+
+        }
        static void Main(string[] args)
         {
-            try
+            StringBuilder errorString = new StringBuilder();
+            
+           try
             {
+                // Global variable declaration
+
                 int pid = -1;
-                string processName = "";
+                string processName = "w3wp";
                 int Pid = -1;
                 int delay = 500;
                 int stackTraceCount = 5;
                 string stacktraceLocation = null;
-                // Getting the parameters inatilized 
-                #region Region for setting the console parameters switches
 
+              
+                var state = ParseState.Unknown;
+                
+               // Getting the parameters inatilized 
+                #region Region for setting the console parameters switches   
+               if (args.ToList<string>().Count != 0)
+                {
+                foreach (var arg in args.Skip(1))
+                {
+                    switch (state)
+                    {
+                        case ParseState.Unknown:
+                            if (arg.ToLower() == "/s")
+                            {
+                                state = ParseState.Samples;
+                            }
+                            else if (arg.ToLower() == "/d")
+                            {
+                                state = ParseState.Interval;
+                            }
+                            else
+                            {
+                                Usage();
+                                return;
+                            }
+                            break;
+                        case ParseState.Samples:
+                            if (!int.TryParse(arg, out stackTraceCount))
+                            {
+                                Usage();
+                                return;
+                            }
+                            state = ParseState.Unknown;
+                            break;
+                        case ParseState.Interval:
+                            if (!int.TryParse(arg, out delay))
+                            {
+                                Usage();
+                                return;
+                            }
+                            state = ParseState.Unknown;
+                            break;
+                        default:
+                            break;
+                    }
+                }                          
                 try
                 {
-
-                    Pid = int.Parse(args[0]);
+                   Pid = int.Parse(args[0]);
                 }
                 catch
                 {
@@ -93,65 +157,43 @@ namespace ProcessInfomer
                     else
                     {
                         processName = "w3wp";
-
-                        Console.WriteLine("The switch for process is not provided using [w3wp] as default process name");
+                        errorString.AppendLine("The switch for process is not provided using [w3wp] as default process name");                    
                     }
+                }                             
                 }
-
-                try
+                else
                 {
-
-                    delay = int.Parse(args[1]);
+                    Usage();
                 }
-                catch
-                {
-                    Console.WriteLine("The switch for delay to capture stack trace is not provided using 500MS  as default");
-                }
-
-                try
-                {
-
-                    stackTraceCount = int.Parse(args[2]);
-                }
-                catch
-                {
-                    Console.WriteLine("The switch for stacktrace counts is not provided using 4 traces as default");
-                }
-                try
-                {
-                    if (args[3] != null && args[3].Length != 0)
-                        stacktraceLocation = args[3];
-                }
-                catch
-                {
-                    Console.WriteLine("The switch for stacktrace location is not provided using {0} as default location", stacktraceLocation);
-                }
-
                 #endregion
-                Console.WriteLine("the pid is {0} and the duration is {1}  stacktrace count is  {2} and stack trace location is {3}", processName, delay, stackTraceCount, stacktraceLocation);
-                if (processName == "")
+                
+                errorString.AppendLine("the pid is" + processName + " and the duration is " + delay + " stacktrace count is " +stackTraceCount +" and stack trace location is" +  stacktraceLocation);                
+                
+               if (processName == "")
                     pid = Pid;
-                pid = Process.GetProcessesByName(processName)[0].Id;
-                Console.WriteLine("the selected pid for the process {0} is  {1}", processName, pid);
-                StackTracer stackTracer = new StackTracer();
+                    pid = Process.GetProcessesByName(processName)[0].Id;               
+                errorString.AppendLine("the selected pid for the process"+ processName +" is"+ pid);                
+                StackTracer stackTracer = new StackTracer();                
                 List<StackSample> stackSampleCollection = new List<StackSample>();
                 stackTracer.processName = Process.GetProcessById(pid).ProcessName;
                 stackTracer.processID = pid;
+                
                 for (int i = 0; i < stackTraceCount; i++)
                 {
                     StackSample stackTracerProcessobj = new StackSample();
                     stackTracerProcessobj.processThreadCollection = new List<Thread>();
                     stackTracerProcessobj.sampleCounter = i;
                     stackTracerProcessobj.samplingTime = DateTime.UtcNow;
+                    
                     using (DataTarget dataTarget = DataTarget.AttachToProcess(pid, 5000, AttachFlag.Invasive))
                     {
                         string dacLocation = dataTarget.ClrVersions[0].TryGetDacLocation();
                         ClrRuntime runtime = dataTarget.CreateRuntime(dacLocation);
                         stackTracerProcessobj.threadCount = runtime.Threads.Count;
-                        Console.WriteLine("=============================================================================================================");
-                        Console.WriteLine("There are  {0}  threads in the {1} process", runtime.Threads.Count, Process.GetProcessById(pid).ProcessName);
-                        Console.WriteLine("=============================================================================================================");
-                        Console.WriteLine();
+                        errorString.AppendLine("=============================================================================================================");
+                        errorString.AppendLine("There are"+  runtime.Threads.Count+  "threads in the"+ Process.GetProcessById(pid).ProcessName+ " process" );
+                        errorString.AppendLine("=============================================================================================================");
+                        errorString.AppendLine();
                         foreach (ClrThread crlThreadObj in runtime.Threads)
                         {
                             Thread stackTracerThreadObj = new Thread();
@@ -160,7 +202,7 @@ namespace ProcessInfomer
                             IEnumerable<ClrRoot> test = crlThreadObj.EnumerateStackObjects();
                             stackTracerThreadObj.oSID = crlThreadObj.OSThreadId;
                             stackTracerThreadObj.managedThreadId = crlThreadObj.ManagedThreadId;
-                            Console.WriteLine("There are  {0}  itmes in the stack for the thread ", crlThreadObj.StackTrace.Count);
+                            errorString.AppendLine("There are "+  crlThreadObj.StackTrace.Count+"  itmes in the stack for the thread ");
                             foreach (ClrStackFrame stackFrame in Stackframe)
                             {
                                 stackTracerThreadObj.sampleCaptureTime = DateTime.UtcNow;
@@ -168,7 +210,7 @@ namespace ProcessInfomer
                                 if (stackFrame.Method != null)
                                     tempClrMethod = stackFrame.Method.GetFullSignature();
                                 tracerStackThread.Add(new StackFrame(stackFrame.DisplayString, stackFrame.InstructionPointer, tempClrMethod, stackFrame.StackPointer));
-                                Console.WriteLine("stack trace for thread- " + stackFrame.StackPointer + " -Stack String - " + stackFrame.DisplayString);
+                                errorString.AppendLine("stack trace for thread- " + stackFrame.StackPointer + " -Stack String - " + stackFrame.DisplayString);
                             }
                             stackTracerThreadObj.stackTrace = tracerStackThread;
                             stackTracerProcessobj.processThreadCollection.Add(stackTracerThreadObj);
@@ -178,55 +220,91 @@ namespace ProcessInfomer
                     System.Threading.Thread.Sleep(delay);
                 }
                 stackTracer.sampleCollection = stackSampleCollection;                
-                //if (string.IsNullOrEmpty(stacktraceLocation))
-                //    stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");
-
-                //Console.WriteLine("Deseraliazing the object");
-
-                ////Serelizing the result for the runtime to look into the full object
-                //XmlSerializer serializer = new XmlSerializer(typeof(StackTracer));
-                //using (TextWriter writer = new StreamWriter(stacktraceLocation))
-                //{
-                //    serializer.Serialize(writer, stackTracer);
-                //}
-                //Console.WriteLine("Serialization Complete ");
                 Type testype = stackTracer.GetType();
                 objectSeralizer(stacktraceLocation, testype, stackTracer);
-                Console.Read();
+                errorString.AppendLine();
             }
             catch (Exception ex)
             {
-                try {
-                    Console.WriteLine("Unhandled Exception Occured {0}", ex.StackTrace.ToString());
-                    Console.WriteLine("Inner Exception Occured {0}", ex.InnerException.StackTrace.ToString());
-                   }
-                catch 
+               
+                    if(ex!=null && ex.StackTrace!=null)
+                    errorString.AppendLine("Unhandled Exception Occured " + ex.StackTrace.ToString());
+               
+            }
+           finally
+            {
+                if(errorString.Length !=0)
                 {
+                    System.IO.File.WriteAllText(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),  "Error.txt"), errorString.ToString());
                 }
-               Console.Read();
-            }          
-        }
-
+            }
+        }        
        public static void objectSeralizer(String filePath, Type OjectType, object Object)
         {
+           // Sample to get the file from the resource. 
+           // Check if stacktrace.xsl already exixt in filepath location
+           // string tempfilepath = (System.Reflection.Assembly.GetExecutingAssembly().Location).Replace(Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),"")+ "stacktrace.xsl";      
+                   
+           //if (!File.Exists(tempfilepath))
+           //{
+           //   Assembly _assembly = Assembly.GetExecutingAssembly();
+           //   Stream _textStreamReader = _assembly.GetManifestResourceStream("StackTracer.bin.Debug.stacktrace.xsl");
+           //   using (Stream s = File.Create("D:\\github\\stacktracer\\bin\\Debug\\testc.xsl"))
+           //   {
+           //      _textStreamReader.CopyTo(s);
+           //   }
+           //    Console.Read();
+           //}
+           // Code to seralize the oject.
             string  stacktraceLocation = filePath;
-                Type ClassToSerelaize = OjectType;
+             Type ClassToSerelaize = OjectType;
                 if (string.IsNullOrEmpty(stacktraceLocation))
-                stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");          
-                Console.WriteLine("Deseraliazing the object");
-                //Serelizing the result for the runtime to look into the full object
+                    stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");          
+                    Console.WriteLine("Deseraliazing the object");
+                
+           //Serelizing the result for the runtime to look into the full object
                 XmlSerializer serializer = new XmlSerializer(ClassToSerelaize);
                 using (XmlWriter writer = XmlWriter.Create(stacktraceLocation))
                             {
                                 writer.WriteProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"stacktrace.xsl\"");
-                            serializer.Serialize(writer, Object);
+                                serializer.Serialize(writer, Object);
                             }            
-                            Console.WriteLine("Serialization Complete ");
-
-                           
+                                Console.WriteLine("Serialization Complete ");                          
         }              
     }
 }
 
 // Comments - Can store another resouces in the resources based on the bitness of the file.
-// 
+/*     var state = ParseState.Unknown;
+            foreach (var arg in args.Skip(1)) {
+                switch (state) {
+                    case ParseState.Unknown:
+                        if (arg.ToLower() == "/s") {
+                            state = ParseState.Samples;
+                        } else if (arg.ToLower() == "/i") {
+                            state = ParseState.Interval;
+                        } else {
+                            Usage();
+                            return;
+                        }
+                        break;
+                    case ParseState.Samples:
+                        if (!Int32.TryParse(arg, out samples)) {
+                            Usage();
+                            return;
+                        }
+                        state = ParseState.Unknown;
+                        break;
+                    case ParseState.Interval:
+                        if (!Int32.TryParse(arg, out sampleInterval)) {
+                            Usage();
+                            return;
+                        }
+                        state = ParseState.Unknown;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+*/

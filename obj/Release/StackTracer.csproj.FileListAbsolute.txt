@@ -1,0 +1,2 @@
+D:\github\stacktracer\obj\Release\ProcessInfomer.Properties.Resources.resources
+D:\github\stacktracer\obj\Release\StackTracer.csproj.GenerateResource.Cache

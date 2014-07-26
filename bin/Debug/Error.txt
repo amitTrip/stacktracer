@@ -1,0 +1,431 @@
+the pid isw3wp and the duration is 500 stacktrace count is 10 and stack trace location is
+the selected pid for the processw3wp is18900
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 25  itmes in the stack for the thread 
+stack trace for thread- 217152937688 -Stack String - HelperMethodFrame
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 25  itmes in the stack for the thread 
+stack trace for thread- 217152937688 -Stack String - HelperMethodFrame
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 25  itmes in the stack for the thread 
+stack trace for thread- 217152937688 -Stack String - HelperMethodFrame
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 25  itmes in the stack for the thread 
+stack trace for thread- 217152937688 -Stack String - HelperMethodFrame
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 25  itmes in the stack for the thread 
+stack trace for thread- 217152937688 -Stack String - HelperMethodFrame
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 25  itmes in the stack for the thread 
+stack trace for thread- 217152937688 -Stack String - HelperMethodFrame
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 26  itmes in the stack for the thread 
+stack trace for thread- 217152937640 -Stack String - HelperMethodFrame
+stack trace for thread- 217152937952 -Stack String - ASP.test_aspx.MytestFunction_2()
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 26  itmes in the stack for the thread 
+stack trace for thread- 217152937640 -Stack String - HelperMethodFrame
+stack trace for thread- 217152937952 -Stack String - ASP.test_aspx.MytestFunction_3()
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 26  itmes in the stack for the thread 
+stack trace for thread- 217152937640 -Stack String - HelperMethodFrame
+stack trace for thread- 217152937952 -Stack String - ASP.test_aspx.MytestFunction_4()
+stack trace for thread- 217152938000 -Stack String - ASP.test_aspx.Page_Load(System.Object, System.EventArgs)
+stack trace for thread- 217152938080 -Stack String - System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr, System.Object, System.Object, System.EventArgs)
+stack trace for thread- 217152938128 -Stack String - System.Web.Util.CalliEventHandlerDelegateProxy.Callback(System.Object, System.EventArgs)
+stack trace for thread- 217152938176 -Stack String - System.Web.UI.Control.OnLoad(System.EventArgs)
+stack trace for thread- 217152938240 -Stack String - System.Web.UI.Control.LoadRecursive()
+stack trace for thread- 217152938320 -Stack String - System.Web.UI.Page.ProcessRequestMain(Boolean, Boolean)
+stack trace for thread- 217152938528 -Stack String - System.Web.UI.Page.ProcessRequest(Boolean, Boolean)
+stack trace for thread- 217152938624 -Stack String - System.Web.UI.Page.ProcessRequest()
+stack trace for thread- 217152938720 -Stack String - System.Web.UI.Page.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938816 -Stack String - ASP.test_aspx.ProcessRequest(System.Web.HttpContext)
+stack trace for thread- 217152938864 -Stack String - System.Web.HttpApplication+CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+stack trace for thread- 217152939040 -Stack String - System.Web.HttpApplication.ExecuteStep(IExecutionStep, Boolean ByRef)
+stack trace for thread- 217152939200 -Stack String - System.Web.HttpApplication+PipelineStepManager.ResumeSteps(System.Exception)
+stack trace for thread- 217152939600 -Stack String - System.Web.HttpApplication.BeginProcessRequestNotification(System.Web.HttpContext, System.AsyncCallback)
+stack trace for thread- 217152939680 -Stack String - System.Web.HttpRuntime.ProcessRequestNotificationPrivate(System.Web.Hosting.IIS7WorkerRequest, System.Web.HttpContext)
+stack trace for thread- 217152939968 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940352 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152940448 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152942656 -Stack String - NDirectMethodFrameStandalone
+stack trace for thread- 217152942592 -Stack String - DomainNeutralILStubClass.IL_STUB(IntPtr, System.Web.RequestNotificationStatus ByRef)
+stack trace for thread- 217152942816 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943200 -Stack String - System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr, IntPtr, IntPtr, Int32)
+stack trace for thread- 217152943296 -Stack String - DomainNeutralILStubClass.IL_STUB(Int64, Int64, Int64, Int32)
+stack trace for thread- 217152943768 -Stack String - ContextTransitionFrame
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+=============================================================================================================
+There are16threads in thew3wp process
+=============================================================================================================
+
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+There are 0  itmes in the stack for the thread 
+
