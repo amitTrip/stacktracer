@@ -1,9 +1,9 @@
 D:\github\stacktracer\bin\Debug\ProcessInfomer.exe.config
 D:\github\stacktracer\bin\Debug\ProcessInfomer.exe
 D:\github\stacktracer\bin\Debug\ProcessInfomer.pdb
+D:\github\stacktracer\bin\Debug\Microsoft.Diagnostics.Runtime.dll
+D:\github\stacktracer\obj\Debug\ProcessInfomer.g.resources
+D:\github\stacktracer\obj\Debug\StackTracer.Properties.Resources.resources
+D:\github\stacktracer\obj\Debug\StackTracer.csproj.GenerateResource.Cache
 D:\github\stacktracer\obj\Debug\ProcessInfomer.exe
 D:\github\stacktracer\obj\Debug\ProcessInfomer.pdb
-D:\github\stacktracer\obj\Debug\StackTracer.csproj.GenerateResource.Cache
-D:\github\stacktracer\obj\Debug\ProcessInfomer.g.resources
-D:\github\stacktracer\obj\Debug\StackTracer.csprojResolveAssemblyReference.cache
-D:\github\stacktracer\obj\Debug\StackTracer.Properties.Resources.resources

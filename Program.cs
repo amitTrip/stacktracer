@@ -241,21 +241,22 @@ namespace StackTracer
         }        
        public static void objectSeralizer(String filePath, Type OjectType, object Object)
         {
-           // Sample to get the file from the resource. 
-           // Check if stacktrace.xsl already exixt in filepath location
-           // string tempfilepath = (System.Reflection.Assembly.GetExecutingAssembly().Location).Replace(Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),"")+ "stacktrace.xsl";      
-                   
-           //if (!File.Exists(tempfilepath))
-           //{
-           //   Assembly _assembly = Assembly.GetExecutingAssembly();
-           //   Stream _textStreamReader = _assembly.GetManifestResourceStream("StackTracer.bin.Debug.stacktrace.xsl");
-           //   using (Stream s = File.Create("D:\\github\\stacktracer\\bin\\Debug\\testc.xsl"))
-           //   {
-           //      _textStreamReader.CopyTo(s);
-           //   }
-           //    Console.Read();
-           //}
-           // Code to seralize the oject.
+             //Sample to get the file from the resource. 
+             //Check if stacktrace.xsl already exixt in filepath location
+             string tempfilepath = (System.Reflection.Assembly.GetExecutingAssembly().Location).Replace(Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),"")+ "stacktrace.xsl";      
+
+            if (!File.Exists(tempfilepath))
+            {
+               Assembly _assembly = Assembly.GetExecutingAssembly();
+               Stream _textStreamReader = _assembly.GetManifestResourceStream("StackTracer.bin.Debug.stacktrace.xsl");
+               using (Stream s = File.Create(tempfilepath))
+               {
+                  _textStreamReader.CopyTo(s);
+               }
+               
+            }
+           
+           //  Code to seralize the oject.
             string  stacktraceLocation = filePath;
              Type ClassToSerelaize = OjectType;
                 if (string.IsNullOrEmpty(stacktraceLocation))
@@ -274,37 +275,3 @@ namespace StackTracer
     }
 }
 
-// Comments - Can store another resouces in the resources based on the bitness of the file.
-/*     var state = ParseState.Unknown;
-            foreach (var arg in args.Skip(1)) {
-                switch (state) {
-                    case ParseState.Unknown:
-                        if (arg.ToLower() == "/s") {
-                            state = ParseState.Samples;
-                        } else if (arg.ToLower() == "/i") {
-                            state = ParseState.Interval;
-                        } else {
-                            Usage();
-                            return;
-                        }
-                        break;
-                    case ParseState.Samples:
-                        if (!Int32.TryParse(arg, out samples)) {
-                            Usage();
-                            return;
-                        }
-                        state = ParseState.Unknown;
-                        break;
-                    case ParseState.Interval:
-                        if (!Int32.TryParse(arg, out sampleInterval)) {
-                            Usage();
-                            return;
-                        }
-                        state = ParseState.Unknown;
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-*/

@@ -1,0 +1,9 @@
+D:\github\stacktracer\obj\x64\Release\StackTracer.Properties.Resources.resources
+D:\github\stacktracer\obj\x64\Release\StackTracer.csproj.GenerateResource.Cache
+D:\github\stacktracer\bin\x64\Release\ProcessInfomer.exe.config
+D:\github\stacktracer\bin\x64\Release\ProcessInfomer.exe
+D:\github\stacktracer\bin\x64\Release\ProcessInfomer.pdb
+D:\github\stacktracer\bin\x64\Release\Microsoft.Diagnostics.Runtime.dll
+D:\github\stacktracer\obj\x64\Release\ProcessInfomer.exe
+D:\github\stacktracer\obj\x64\Release\ProcessInfomer.pdb
+D:\github\stacktracer\bin\x64\Release\bin\Debug\stacktrace.xsl

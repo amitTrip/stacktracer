@@ -1,5 +1,5 @@
-the pid isw3wp and the duration is 200 stacktrace count is 1 and stack trace location is
+the pid isw3wp and the duration is 500 stacktrace count is 10 and stack trace location is
 the selected pid for the processw3wp is6992
 Unhandled Exception Occured    at Microsoft.Diagnostics.Runtime.DbgEngDataReader..ctor(Int32 pid, AttachFlag flags, UInt32 msecTimeout)
    at Microsoft.Diagnostics.Runtime.DataTarget.AttachToProcess(Int32 pid, UInt32 msecTimeout, AttachFlag attachFlag)
-   at StackTracer.Program.Main(String[] args) in d:\github\stacktracer\Program.cs:line 188
+   at StackTracer.Program.Main(String[] args) in d:\github\stacktracer\Program.cs:line 186

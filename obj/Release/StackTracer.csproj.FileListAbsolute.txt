@@ -1,2 +1,9 @@
-D:\github\stacktracer\obj\Release\ProcessInfomer.Properties.Resources.resources
 D:\github\stacktracer\obj\Release\StackTracer.csproj.GenerateResource.Cache
+D:\github\stacktracer\bin\Release\ProcessInfomer.exe.config
+D:\github\stacktracer\obj\Release\StackTracer.csprojResolveAssemblyReference.cache
+D:\github\stacktracer\obj\Release\ProcessInfomer.g.resources
+D:\github\stacktracer\obj\Release\StackTracer.Properties.Resources.resources
+D:\github\stacktracer\bin\Release\ProcessInfomer.exe
+D:\github\stacktracer\bin\Release\ProcessInfomer.pdb
+D:\github\stacktracer\obj\Release\ProcessInfomer.exe
+D:\github\stacktracer\obj\Release\ProcessInfomer.pdb
