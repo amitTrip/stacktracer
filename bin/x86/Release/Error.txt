@@ -1,0 +1,2 @@
+the pid isw3wp and the duration is 500 stacktrace count is 5 and stack trace location is
+Unhandled Exception Occured    at StackTracer.Program.Main(String[] args) in d:\github\stacktracer\Program.cs:line 90
