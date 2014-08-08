@@ -78,17 +78,17 @@ namespace StackTracer
         {
             Console.WriteLine("Usage: Stack Tracer : ProcessName|PID [options]");
             Console.WriteLine();
-            Console.WriteLine("  /S     indicates how many samples of the stacks you have to take (default:10)");
-            Console.WriteLine("  /D     the interval between stack samples in milliseconds (default:1000)");
+            Console.WriteLine("  /S     Indicates how many samples of the stacks you have to take (default:10)");
+            Console.WriteLine("  /D     The interval between stack samples in milliseconds (default:1000)");
             Console.WriteLine("");
-            Console.WriteLine("Example: stacktracer wpw3 /s 60 /d 500");
+            Console.WriteLine("Example: stacktracer w3wp /s 60 /d 500");
             Console.WriteLine("         Take 60 samples once every 500 milliseconds");
 
         }
        static void Main(string[] args)
         {
             StringBuilder errorString = new StringBuilder();
-            
+           
            try
             {
                 // Global variable declaration
@@ -164,6 +164,7 @@ namespace StackTracer
                 else
                 {
                     Usage();
+                    Console.ReadLine();
                 }
                 #endregion
                 
@@ -199,7 +200,6 @@ namespace StackTracer
                             Thread stackTracerThreadObj = new Thread();
                             List<StackFrame> tracerStackThread = new List<StackFrame>();
                             IList<ClrStackFrame> Stackframe = crlThreadObj.StackTrace;
-                            IEnumerable<ClrRoot> test = crlThreadObj.EnumerateStackObjects();
                             stackTracerThreadObj.oSID = crlThreadObj.OSThreadId;
                             stackTracerThreadObj.managedThreadId = crlThreadObj.ManagedThreadId;
                             errorString.AppendLine("There are "+  crlThreadObj.StackTrace.Count+"  itmes in the stack for the thread ");
@@ -208,7 +208,7 @@ namespace StackTracer
                                 stackTracerThreadObj.sampleCaptureTime = DateTime.UtcNow;
                                 string tempClrMethod = "NULL";
                                 if (stackFrame.Method != null)
-                                    tempClrMethod = stackFrame.Method.GetFullSignature();
+                                    tempClrMethod = stackFrame.Method.GetFullSignature(); // We need to create a dicitonary 
                                 tracerStackThread.Add(new StackFrame(stackFrame.DisplayString, stackFrame.InstructionPointer, tempClrMethod, stackFrame.StackPointer));
                                 errorString.AppendLine("stack trace for thread- " + stackFrame.StackPointer + " -Stack String - " + stackFrame.DisplayString);
                             }
@@ -229,14 +229,16 @@ namespace StackTracer
                
                     if(ex!=null && ex.StackTrace!=null)
                     errorString.AppendLine("Unhandled Exception Occured " + ex.StackTrace.ToString());
-               
-            }
+                    Console.WriteLine("Unhandled Exception Occured "+ ex.StackTrace.ToString());
+             }
            finally
             {
                 if(errorString.Length !=0)
                 {
                     System.IO.File.WriteAllText(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),  "Error.txt"), errorString.ToString());
+                    Console.ReadLine();
                 }
+                
             }
         }        
        public static void objectSeralizer(String filePath, Type OjectType, object Object)
@@ -261,7 +263,7 @@ namespace StackTracer
              Type ClassToSerelaize = OjectType;
                 if (string.IsNullOrEmpty(stacktraceLocation))
                     stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");          
-                    Console.WriteLine("Deseraliazing the object");
+                    Console.WriteLine("Generating the StackTrace report");
                 
            //Serelizing the result for the runtime to look into the full object
                 XmlSerializer serializer = new XmlSerializer(ClassToSerelaize);
@@ -270,7 +272,8 @@ namespace StackTracer
                                 writer.WriteProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"stacktrace.xsl\"");
                                 serializer.Serialize(writer, Object);
                             }            
-                                Console.WriteLine("Serialization Complete ");                          
+                                Console.WriteLine("StackTace Report Generated");
+                                Console.Read();          
         }              
     }
 }
