@@ -17,12 +17,12 @@
     <StartArguments>w3wp  /s 10  /d  500</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <StartArguments>w3wp  /s 10  /d  500</StartArguments>
+    <StartArguments>w3wp /d 10 /s 10  /i 800</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <StartArguments>w3wp  /s 10  /d  500</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <StartArguments>w3wp  /s 5  /d  500</StartArguments>
+    <StartArguments>w3wp /dd 10 /s 10  /i 800</StartArguments>
   </PropertyGroup>
 </Project>

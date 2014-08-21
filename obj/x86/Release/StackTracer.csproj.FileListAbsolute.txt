@@ -1,5 +1,5 @@
-D:\github\stacktracer\bin\x86\Release\ProcessInfomer.exe.config
 D:\github\stacktracer\bin\x86\Release\bin\Debug\stacktrace.xsl
+D:\github\stacktracer\bin\x86\Release\ProcessInfomer.exe.config
 D:\github\stacktracer\bin\x86\Release\ProcessInfomer.exe
 D:\github\stacktracer\bin\x86\Release\ProcessInfomer.pdb
 D:\github\stacktracer\bin\x86\Release\Microsoft.Diagnostics.Runtime.dll

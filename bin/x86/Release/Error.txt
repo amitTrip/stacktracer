@@ -1,7 +1,5 @@
 the pid isw3wp and the duration is 500 stacktrace count is 5 and stack trace location is
-the selected pid for the processw3wp is12540
-Unhandled Exception Occured    at Microsoft.Diagnostics.Runtime.RuntimeBase..ctor(DataTargetImpl dataTarget, DacLibrary lib)
-   at Microsoft.Diagnostics.Runtime.Desktop.DesktopRuntimeBase..ctor(DataTargetImpl dt, DacLibrary lib)
-   at Microsoft.Diagnostics.Runtime.Desktop.LegacyRuntime..ctor(DataTargetImpl dt, DacLibrary lib, DesktopVersion version, Int32 minor)
-   at Microsoft.Diagnostics.Runtime.DataTargetImpl.CreateRuntime(String dacFilename)
-   at StackTracer.Program.Main(String[] args) in d:\github\stacktracer\Program.cs:line 192
+the selected pid for the processw3wp is15824
+Unhandled Exception Occured    at Microsoft.Diagnostics.Runtime.DbgEngDataReader..ctor(Int32 pid, AttachFlag flags, UInt32 msecTimeout)
+   at Microsoft.Diagnostics.Runtime.DataTarget.AttachToProcess(Int32 pid, UInt32 msecTimeout, AttachFlag attachFlag)
+   at StackTracer.Program.Main(String[] args) in d:\github\stacktracer\Program.cs:line 216
