@@ -194,7 +194,7 @@ namespace StackTracer
                {
                    Usage();
                    state = ParseState.Help;
-                                  
+                                
                     
                 }
                 #endregion
@@ -259,10 +259,7 @@ namespace StackTracer
                    objectSeralizer(stacktraceLocation, testype, stackTracer);
                    errorString.AppendLine();
                }
-               else
-               {
-                   Usage();
-               }
+             
             }
             catch (Exception ex)
             {
