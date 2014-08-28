@@ -198,68 +198,103 @@ namespace StackTracer
                     
                 }
                 #endregion
-               if (state != ParseState.Help )
+               if (state != ParseState.Help)
                {
                    errorString.AppendLine("the pid is" + processName + " and the duration is " + delay + " stacktrace count is " + stackTraceCount + " and stack trace location is" + stacktraceLocation);
-                   Console.WriteLine("StackTrace Collection Begin...");
-                   System.Threading.Thread.Sleep(pdelay);
 
                    if (processName == "")
                        pid = Pid;
-                   pid = Process.GetProcessesByName(processName)[0].Id;
-                   errorString.AppendLine("the selected pid for the process" + processName + " is" + pid);
-                   StackTracer stackTracer = new StackTracer();
-                   List<StackSample> stackSampleCollection = new List<StackSample>();
-                   stackTracer.processName = Process.GetProcessById(pid).ProcessName;
-                   stackTracer.processID = pid;
-
-
-                   for (int i = 0; i < stackTraceCount; i++)
+                   try
                    {
-                       StackSample stackTracerProcessobj = new StackSample();
-                       stackTracerProcessobj.processThreadCollection = new List<Thread>();
-                       stackTracerProcessobj.sampleCounter = i;
-                       stackTracerProcessobj.samplingTime = DateTime.UtcNow;
-
-                       using (DataTarget dataTarget = DataTarget.AttachToProcess(pid, 5000, AttachFlag.Invasive))
-                       {
-                           string dacLocation = dataTarget.ClrVersions[0].TryGetDacLocation();
-                           ClrRuntime runtime = dataTarget.CreateRuntime(dacLocation);
-                           stackTracerProcessobj.threadCount = runtime.Threads.Count;
-                           errorString.AppendLine("=============================================================================================================");
-                           errorString.AppendLine("There are" + runtime.Threads.Count + "threads in the" + Process.GetProcessById(pid).ProcessName + " process");
-                           errorString.AppendLine("=============================================================================================================");
-                           errorString.AppendLine();
-                           foreach (ClrThread crlThreadObj in runtime.Threads)
-                           {
-                               Thread stackTracerThreadObj = new Thread();
-                               List<StackFrame> tracerStackThread = new List<StackFrame>();
-                               IList<ClrStackFrame> Stackframe = crlThreadObj.StackTrace;
-                               stackTracerThreadObj.oSID = crlThreadObj.OSThreadId;
-                               stackTracerThreadObj.managedThreadId = crlThreadObj.ManagedThreadId;
-                               errorString.AppendLine("There are " + crlThreadObj.StackTrace.Count + "  itmes in the stack for the thread ");
-                               foreach (ClrStackFrame stackFrame in Stackframe)
-                               {
-                                   stackTracerThreadObj.sampleCaptureTime = DateTime.UtcNow;
-                                   string tempClrMethod = "NULL";
-                                   if (stackFrame.Method != null)
-                                       tempClrMethod = stackFrame.Method.GetFullSignature(); // We need to create a dicitonary 
-                                   tracerStackThread.Add(new StackFrame(stackFrame.DisplayString, stackFrame.InstructionPointer, tempClrMethod, stackFrame.StackPointer));
-                                   errorString.AppendLine("stack trace for thread- " + stackFrame.StackPointer + " -Stack String - " + stackFrame.DisplayString);
-                               }
-                               stackTracerThreadObj.stackTrace = tracerStackThread;
-                               stackTracerProcessobj.processThreadCollection.Add(stackTracerThreadObj);
-                           }
-                       }
-                       stackSampleCollection.Add(stackTracerProcessobj);
-                       System.Threading.Thread.Sleep(delay);
+                       pid = Process.GetProcessesByName(processName)[0].Id;
                    }
-                   stackTracer.sampleCollection = stackSampleCollection;
-                   Type testype = stackTracer.GetType();
-                   objectSeralizer(stacktraceLocation, testype, stackTracer);
-                   errorString.AppendLine();
+                   catch (Exception Ex)
+                   {
+                       Console.WriteLine("Process Name Doesn't Exist");
+                       throw;
+                   }
+
+                   if (Process.GetProcessesByName(processName).ToList().Count() == 1 )
+                   {
+
+                       Console.WriteLine("StackTrace Collection Begin...");
+                       System.Threading.Thread.Sleep(pdelay * 1000);
+
+
+
+
+                       errorString.AppendLine("the selected pid for the process" + processName + " is" + pid);
+                       StackTracer stackTracer = new StackTracer();
+                       List<StackSample> stackSampleCollection = new List<StackSample>();
+                       stackTracer.processName = Process.GetProcessById(pid).ProcessName;
+                       stackTracer.processID = pid;
+
+
+                       for (int i = 0; i < stackTraceCount; i++)
+                       {
+                           StackSample stackTracerProcessobj = new StackSample();
+                           stackTracerProcessobj.processThreadCollection = new List<Thread>();
+                           stackTracerProcessobj.sampleCounter = i;
+                           stackTracerProcessobj.samplingTime = DateTime.UtcNow;
+
+                           using (DataTarget dataTarget = DataTarget.AttachToProcess(pid, 5000, AttachFlag.Invasive))
+                           {
+                               string dacLocation = string.Empty;
+                               ClrRuntime runtime = null;
+                               try { 
+                                
+                                dacLocation = dataTarget.ClrVersions[0].TryGetDacLocation();
+                                runtime = dataTarget.CreateRuntime(dacLocation);
+                                   
+                               }
+                               catch
+                               {
+                                   Console.WriteLine("The process bitness mismatch or process is native");
+                                   Console.WriteLine("Select StackTrace_x86 for 32 bit .NET process");
+                                   Console.WriteLine("Select StackTrace_x64 for 64 bit .NET process");
+                                   throw;
+                               }
+                               stackTracerProcessobj.threadCount = runtime.Threads.Count;
+                               errorString.AppendLine("=============================================================================================================");
+                               errorString.AppendLine("There are" + runtime.Threads.Count + "threads in the" + Process.GetProcessById(pid).ProcessName + " process");
+                               errorString.AppendLine("=============================================================================================================");
+                               errorString.AppendLine();
+                               foreach (ClrThread crlThreadObj in runtime.Threads)
+                               {
+                                   Thread stackTracerThreadObj = new Thread();
+                                   List<StackFrame> tracerStackThread = new List<StackFrame>();
+                                   IList<ClrStackFrame> Stackframe = crlThreadObj.StackTrace;
+                                   stackTracerThreadObj.oSID = crlThreadObj.OSThreadId;
+                                   stackTracerThreadObj.managedThreadId = crlThreadObj.ManagedThreadId;
+                                   errorString.AppendLine("There are " + crlThreadObj.StackTrace.Count + "  itmes in the stack for the thread ");
+                                   foreach (ClrStackFrame stackFrame in Stackframe)
+                                   {
+                                       stackTracerThreadObj.sampleCaptureTime = DateTime.UtcNow;
+                                       string tempClrMethod = "NULL";
+                                       if (stackFrame.Method != null)
+                                           tempClrMethod = stackFrame.Method.GetFullSignature(); // We need to create a dicitonary 
+                                       tracerStackThread.Add(new StackFrame(stackFrame.DisplayString, stackFrame.InstructionPointer, tempClrMethod, stackFrame.StackPointer));
+                                       errorString.AppendLine("stack trace for thread- " + stackFrame.StackPointer + " -Stack String - " + stackFrame.DisplayString);
+                                   }
+                                   stackTracerThreadObj.stackTrace = tracerStackThread;
+                                   stackTracerProcessobj.processThreadCollection.Add(stackTracerThreadObj);
+                               }
+                           }
+                           stackSampleCollection.Add(stackTracerProcessobj);
+                           System.Threading.Thread.Sleep(delay);
+                       }
+                       stackTracer.sampleCollection = stackSampleCollection;
+                       Type testype = stackTracer.GetType();
+                       objectSeralizer(stacktraceLocation, testype, stackTracer);
+                       errorString.AppendLine();
+                   }
+                   else
+                   {
+                       Console.WriteLine("There are multiple process instances with selected process name  {0}",processName);
+                       Console.WriteLine("Please use the process ID to capture the stack trace ");
+                       Console.WriteLine("Example: stacktracer_x86 PID /d 10 /s 60 /i 500");
+                   }
                }
-             
             }
             catch (Exception ex)
             {
@@ -276,7 +311,7 @@ namespace StackTracer
                 if(errorString.Length !=0)
                 {
                     System.IO.File.WriteAllText(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),  "Error.txt"), errorString.ToString());
-                   // Console.ReadLine();
+                    Console.ReadLine();
                 }
                 
             }
