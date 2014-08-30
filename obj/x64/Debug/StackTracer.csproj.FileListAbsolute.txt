@@ -1,0 +1,1 @@
+D:\github\stacktracer\bin\x64\Debug\StackTracer.exe.config

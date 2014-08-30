@@ -12,6 +12,10 @@ using System.Reflection;
 
 namespace StackTracer
 { 
+    /// <summary>
+    /// StackTracer class is used to contain the stacktracer object which 
+    /// is seralized to xml object after collecting stack traces.
+    /// </summary>
     public class StackTracer
     {
         public StackTracer()
@@ -22,6 +26,9 @@ namespace StackTracer
         public int processID { get; set; }
         public List<StackSample> sampleCollection { get; set; }
     }    
+    /// <summary>
+    /// StackSample is the datastructure to hold the data for single SatckSample
+    /// </summary>
     public class StackSample
     {
         public StackSample()
@@ -33,6 +40,10 @@ namespace StackTracer
         public int threadCount { get; set; }
         public List<Thread> processThreadCollection { get; set; }
     }   
+    /// <summary>
+    /// Thread object contains the information related to the current thread for which stack
+    /// trace is being generated
+    /// </summary>
     public class Thread
     {
          public Thread()
@@ -48,6 +59,10 @@ namespace StackTracer
         public uint oSID { get; set; }
         public List<StackFrame> stackTrace { get; set; }     
     }
+    /// <summary>
+    /// StackFrame is the object which is being used to hold the data for a single stack trace for a 
+    /// particular thread.
+    /// </summary>
     public class StackFrame
     {    
         public StackFrame()
@@ -69,42 +84,48 @@ namespace StackTracer
     }    
     class Program
     {
+        /// <summary>
+        /// ParseState Enum is used to define the states for the parsing the console arguments
+        /// </summary>
         enum ParseState
         {
             Unknown, Samples, Interval,Help,Predelay
         }
-
+        /// <summary>
+        /// Usage method is used to display the help menu to end user
+        /// </summary>
         static void Usage()
         {
-            Console.WriteLine("Usage: Stack Tracer : ProcessName|PID [options] ");
-            Console.WriteLine("-------------------------------------------------------------------------------------");
-            Console.WriteLine("  /D     Initial delay to start the trace collection by the application (Default:0)");
-            Console.WriteLine("  /S     Indicates how many samples of the stacks you have to take (default:10)");
-            Console.WriteLine("  /I     The interval between stack samples in milliseconds (default:1000)");
-            Console.WriteLine("  /?     Help Menu");
-            Console.WriteLine("------------------------------------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine("Usage: StackTracer : ProcessName|PID [options] ");
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine(" ProcessName|PID  : You can give .NET process name or Process ID (Default:W3Wp)");
+            Console.WriteLine(" /D : Initial delay in seconds to halt trace collection (Default:0)");
+            Console.WriteLine(" /S : Indicates number of StackTraces for the process. (Default:10)");
+            Console.WriteLine(" /I : Interval between StackTrace samples in milliseconds (Default:1000)");
+            Console.WriteLine(" /? : To get the usage menu");
+            Console.WriteLine("-------------------------------------------------------------------------------");
             Console.WriteLine("Example: stacktracer w3wp /d 10 /s 60 /i 500");
-            Console.WriteLine("Wait for 10 seconsts to Take 60 samples one sample in every 500 milliseconds");
-
+            Console.WriteLine("Wait for 10 seconds to take 60  stacktrace samples for w3wp process...");
+            Console.WriteLine("..where you are taking one stacktrace sample in every 500 milliseconds");
+          //  Console.Read();
         }
        static void Main(string[] args)
         {
-            StringBuilder errorString = new StringBuilder();
+            StringBuilder StackTracerLogger = new StringBuilder();
             var state = ParseState.Unknown;
            try
             {
                 // Global variable declaration
 
                 int pid = -1;
-                string processName = "w3wp";
+                string processName ="";
                 int Pid = -1;
                 int delay = 500;
                 int stackTraceCount = 5;
                 string stacktraceLocation = null;
                 int pdelay = 0;
-              
-              
-                
+
                // Getting the parameters inatilized 
                 #region Region for setting the console parameters switches   
                if (args.ToList<string>().Count != 0)
@@ -174,19 +195,21 @@ namespace StackTracer
                    
 
                     if (args[0] != null && args[0].Length != 0)
+                    {
                         if (args[0].ToLower() == "/?")
                         {
                             state = ParseState.Help;
-                           
+                            Usage();
                         }
                         else
                         {
                             processName = args[0];
                         }
-                    else
-                    {
-                        processName = "w3wp";
-                        errorString.AppendLine("The switch for process is not provided using [w3wp] as default process name");                    
+                    //else
+                    //{
+                    //    processName = "w3wp";
+                    //    StackTracerLogger.AppendLine("The switch for process is not provided using [w3wp] as default process name");                    
+                    //}
                     }
                 }                             
                 }
@@ -198,11 +221,9 @@ namespace StackTracer
                     
                 }
                 #endregion
-               if (state != ParseState.Help)
+                if (state != ParseState.Help)
                {
-                   errorString.AppendLine("the pid is" + processName + " and the duration is " + delay + " stacktrace count is " + stackTraceCount + " and stack trace location is" + stacktraceLocation);
-
-                   if (processName == "")
+                  if (processName == "")
                        pid = Pid;
                    try
                    {
@@ -210,33 +231,48 @@ namespace StackTracer
                    }
                    catch (Exception Ex)
                    {
-                       Console.WriteLine("Process Name Doesn't Exist");
-                       throw;
-                   }
+                       if (processName != "")
+                           Console.WriteLine("Process with name {0} Doesn't Exist", processName);
+                       else
+                       {
+                           try
+                           {
+                               Process.GetProcessById(pid);
 
+                           }
+                           catch
+                           {
+                               Console.WriteLine("Process with PID {0} Doesn't Exist", pid);
+                           }
+                       }
+                       StackTracerLogger.AppendLine("Process with name"+ processName + " Doesn't Exist");
+                       throw;
+                      
+                   }
                    if (Process.GetProcessesByName(processName).ToList().Count() == 1 )
                    {
-
-                       Console.WriteLine("StackTrace Collection Begin...");
+                       Console.WriteLine("Initiating the StackTrace Collection after {0} Seconds....", pdelay);
+                       
                        System.Threading.Thread.Sleep(pdelay * 1000);
-
-
-
-
-                       errorString.AppendLine("the selected pid for the process" + processName + " is" + pid);
+ 
+                       StackTracerLogger.AppendLine("The selected pid for the process " + processName + " is " + pid);
                        StackTracer stackTracer = new StackTracer();
                        List<StackSample> stackSampleCollection = new List<StackSample>();
                        stackTracer.processName = Process.GetProcessById(pid).ProcessName;
                        stackTracer.processID = pid;
 
-
                        for (int i = 0; i < stackTraceCount; i++)
                        {
+                           Console.WriteLine("Collecting the sample number : {0} ", i);
+                           StackTracerLogger.AppendLine("Collecting the sample number  : "+ i);
+                           // Instanting all the datastrcture to hold the 
+                           //stactrace sample objects for each sample
                            StackSample stackTracerProcessobj = new StackSample();
                            stackTracerProcessobj.processThreadCollection = new List<Thread>();
                            stackTracerProcessobj.sampleCounter = i;
                            stackTracerProcessobj.samplingTime = DateTime.UtcNow;
 
+                           // Trying to attach the debugger to the selected process
                            using (DataTarget dataTarget = DataTarget.AttachToProcess(pid, 5000, AttachFlag.Invasive))
                            {
                                string dacLocation = string.Empty;
@@ -249,16 +285,18 @@ namespace StackTracer
                                }
                                catch
                                {
-                                   Console.WriteLine("The process bitness mismatch or process is native");
+                                   Console.WriteLine("Bitness of process mismatched or process is native");
                                    Console.WriteLine("Select StackTrace_x86 for 32 bit .NET process");
                                    Console.WriteLine("Select StackTrace_x64 for 64 bit .NET process");
+                                   StackTracerLogger.AppendLine("Bitness of process mismatched or process is native");
                                    throw;
                                }
                                stackTracerProcessobj.threadCount = runtime.Threads.Count;
-                               errorString.AppendLine("=============================================================================================================");
-                               errorString.AppendLine("There are" + runtime.Threads.Count + "threads in the" + Process.GetProcessById(pid).ProcessName + " process");
-                               errorString.AppendLine("=============================================================================================================");
-                               errorString.AppendLine();
+                               StackTracerLogger.AppendLine("=============================================================================================================");
+                               StackTracerLogger.AppendLine("There are" + runtime.Threads.Count + "threads in the" + Process.GetProcessById(pid).ProcessName + " process");
+                               StackTracerLogger.AppendLine("=============================================================================================================");
+                               StackTracerLogger.AppendLine();
+
                                foreach (ClrThread crlThreadObj in runtime.Threads)
                                {
                                    Thread stackTracerThreadObj = new Thread();
@@ -266,33 +304,36 @@ namespace StackTracer
                                    IList<ClrStackFrame> Stackframe = crlThreadObj.StackTrace;
                                    stackTracerThreadObj.oSID = crlThreadObj.OSThreadId;
                                    stackTracerThreadObj.managedThreadId = crlThreadObj.ManagedThreadId;
-                                   errorString.AppendLine("There are " + crlThreadObj.StackTrace.Count + "  itmes in the stack for the thread ");
+                                   StackTracerLogger.AppendLine("There are " + crlThreadObj.StackTrace.Count + "  items in the stack for current thread ");
                                    foreach (ClrStackFrame stackFrame in Stackframe)
                                    {
                                        stackTracerThreadObj.sampleCaptureTime = DateTime.UtcNow;
                                        string tempClrMethod = "NULL";
                                        if (stackFrame.Method != null)
-                                           tempClrMethod = stackFrame.Method.GetFullSignature(); // We need to create a dicitonary 
+                                           tempClrMethod = stackFrame.Method.GetFullSignature(); // TO DO : We need to create a dicitonary.
                                        tracerStackThread.Add(new StackFrame(stackFrame.DisplayString, stackFrame.InstructionPointer, tempClrMethod, stackFrame.StackPointer));
-                                       errorString.AppendLine("stack trace for thread- " + stackFrame.StackPointer + " -Stack String - " + stackFrame.DisplayString);
                                    }
                                    stackTracerThreadObj.stackTrace = tracerStackThread;
                                    stackTracerProcessobj.processThreadCollection.Add(stackTracerThreadObj);
                                }
                            }
+                           //Adding the stacktrace sample to the stack trace sample collecction.
                            stackSampleCollection.Add(stackTracerProcessobj);
+                           //Delaying the next stack trace sample by {delay} seconds.
                            System.Threading.Thread.Sleep(delay);
                        }
+                       //Pushing all the satckTrace samples in the global stacktracer object for serialization into xml
                        stackTracer.sampleCollection = stackSampleCollection;
                        Type testype = stackTracer.GetType();
+                       //Calling function to serialize the stacktracer object.
                        objectSeralizer(stacktraceLocation, testype, stackTracer);
-                       errorString.AppendLine();
+                       StackTracerLogger.AppendLine();
                    }
                    else
                    {
-                       Console.WriteLine("There are multiple process instances with selected process name  {0}",processName);
-                       Console.WriteLine("Please use the process ID to capture the stack trace ");
-                       Console.WriteLine("Example: stacktracer_x86 PID /d 10 /s 60 /i 500");
+                       Console.WriteLine("There are multiple process instances with selected process name  :  {0}",processName);
+                       Console.WriteLine("Use process ID for {0} process to capture the stack trace ", processName);
+                       Console.WriteLine("Example: StackTracer_x86 PID /d 10 /s 60 /i 500");
                    }
                }
             }
@@ -301,17 +342,17 @@ namespace StackTracer
 
                 if (ex != null && ex.StackTrace != null)
                 {
-                    errorString.AppendLine("Unhandled Exception Occured " + ex.StackTrace.ToString());
+                    StackTracerLogger.AppendLine("Exception Occured :" + ex.StackTrace.ToString());
                     if (state != ParseState.Help)
-                        Console.WriteLine("Unhandled Exception Occured " + ex.StackTrace.ToString());
+                        Console.WriteLine("Error Occured, refer Stacktracer.log located at {0} " , Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)));
                 }
              }
            finally
             {
-                if(errorString.Length !=0)
+                if(StackTracerLogger.Length !=0)
                 {
-                    System.IO.File.WriteAllText(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),  "Error.txt"), errorString.ToString());
-                    Console.ReadLine();
+                    System.IO.File.WriteAllText(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),  "Stacktracer.log"), StackTracerLogger.ToString());
+                    //Console.ReadLine();
                 }
                 
             }
@@ -338,17 +379,18 @@ namespace StackTracer
              Type ClassToSerelaize = OjectType;
                 if (string.IsNullOrEmpty(stacktraceLocation))
                     stacktraceLocation = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), DateTime.Now.Ticks + ".xml");          
-                    Console.WriteLine("Generating the StackTrace report");
-                
-           //Serelizing the result for the runtime to look into the full object
+                    Console.WriteLine("Generating the StackTrace report....");
+
+                 //Serializing the result for the runtime to look into the full object
                 XmlSerializer serializer = new XmlSerializer(ClassToSerelaize);
                 using (XmlWriter writer = XmlWriter.Create(stacktraceLocation))
                             {
                                 writer.WriteProcessingInstruction("xml-stylesheet", "type=\"text/xsl\" href=\"stacktrace.xsl\"");
                                 serializer.Serialize(writer, Object);
-                            }            
-                                Console.WriteLine("StackTace Report Generated");
-                               // Console.Read();          
+                            }
+                            Console.WriteLine("StackTace Report Generated at the path :");
+                            Console.WriteLine( stacktraceLocation);
+                            // Console.Read();          
         }              
     }
 }
