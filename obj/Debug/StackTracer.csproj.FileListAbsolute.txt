@@ -7,3 +7,13 @@ D:\github\stacktracer\obj\Debug\StackTracer.Properties.Resources.resources
 D:\github\stacktracer\obj\Debug\StackTracer.csproj.GenerateResource.Cache
 D:\github\stacktracer\obj\Debug\ProcessInfomer.exe
 D:\github\stacktracer\obj\Debug\ProcessInfomer.pdb
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\Debug\StackTracer.exe.config
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\Debug\bin\Debug\stacktrace.xsl
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\Debug\StackTracer.exe
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\Debug\StackTracer.pdb
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\Debug\Microsoft.Diagnostics.Runtime.dll
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\Debug\StackTracer.csprojResolveAssemblyReference.cache
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\Debug\StackTracer.Properties.Resources.resources
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\Debug\StackTracer.csproj.GenerateResource.Cache
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\Debug\StackTracer.exe
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\Debug\StackTracer.pdb

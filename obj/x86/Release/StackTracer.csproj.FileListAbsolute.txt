@@ -8,3 +8,13 @@ D:\github\stacktracer\obj\x86\Release\StackTracer.csproj.GenerateResource.Cache
 D:\github\stacktracer\obj\x86\Release\StackTracer.exe
 D:\github\stacktracer\obj\x86\Release\StackTracer.pdb
 D:\github\stacktracer\obj\x86\Release\StackTracer.csprojResolveAssemblyReference.cache
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\x86\Release\bin\Debug\stacktrace.xsl
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\x86\Release\StackTracer.exe.config
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\x86\Release\StackTracer.exe
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\x86\Release\StackTracer.pdb
+C:\Users\rohitra\Documents\GitHub\stacktracer\bin\x86\Release\Microsoft.Diagnostics.Runtime.dll
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\x86\Release\StackTracer.csprojResolveAssemblyReference.cache
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\x86\Release\StackTracer.Properties.Resources.resources
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\x86\Release\StackTracer.csproj.GenerateResource.Cache
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\x86\Release\StackTracer.exe
+C:\Users\rohitra\Documents\GitHub\stacktracer\obj\x86\Release\StackTracer.pdb

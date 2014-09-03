@@ -1,5 +1,0 @@
-The selected pid for the process notepad is 16780
-Collecting the sample number  : 0
-Bitness of process mismatched or process is native
-Exception Occured :   at System.SZArrayHelper.get_Item[T](Int32 index)
-   at StackTracer.Program.Main(String[] args) in d:\github\stacktracer\Program.cs:line 359
