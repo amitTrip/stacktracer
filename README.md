@@ -1,12 +1,17 @@
 #StackTracer
 
-<p>Tool to capture stack traces for a dot net process.</p>
+<img src="https://debugging.io/images/stack.ico"
+ alt="stacktracer logo" title="stacktracer" align="right" />
 
-Introducing Stacktracer.exe
+
+Stacktracer
 -------------------------------
-<p>We would like you to introduce to a new debugging tool called Stacktracer.exe which we have been developing for sometime. This tool is in its initial state and we would like to add a some more useful  functionality. We are looking for feedback on bugs, usability and features from you. </p>
+ A tool that captures and analyzes stack trace samples captured at fixed intervals from any .net CLR process.
 
-<p>Currently we don’t have a tool to troubleshoot hangs less than 15 seconds and this tool we can easily find the root cause right in customer machine without any extra download of symbols or long analysis  etc.</p>	
+The Stacktracer is a console application attaches using the debugengine Interface and works with any .net process; no access to application source code is necessary,
+no library modifications are needed, and there is no run-time instrumentation of CLR code. Configuration
+options given at start of command line to specify the interval for stack trace and number of samples.Current implementation include output generation in xml/xslt for viewing the most recent stack traces. The performance impact of the stacktracer is minimal: less than a 8% increase in total elapsed time for a
+set of standard benchmarks. Future plans include GUI, better filtering capabilities in analysis.	
 
 
 ##Highlights
@@ -41,7 +46,7 @@ Introducing Stacktracer.exe
   </tr>
 </table>
 ---------------------------------------------------------------------------------------------------------------
-**Thanks and Regards,**
+
 <br/>
-Rohith Rajan & Amit Tripathi
+
 	
