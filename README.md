@@ -1,11 +1,8 @@
 #StackTracer
 
-<img src="https://debugging.io/images/stack.ico"
+<img src="http://debugging.io/images/stack.ico"
  alt="stacktracer logo" title="stacktracer" align="right" />
 
-
-Stacktracer
--------------------------------
  A tool that captures and analyzes stack trace samples captured at fixed intervals from any .net CLR process.
 
 The Stacktracer is a console application attaches using the debugengine Interface and works with any .net process; no access to application source code is necessary,
