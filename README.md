@@ -1,3 +1,5 @@
+#StackTracer
+
 <p>Tool to capture stack traces for a dot net process.</p>
 
 Introducing Stacktracer.exe
@@ -38,14 +40,8 @@ Introducing Stacktracer.exe
     <td>2</td><td>.NET Process</td><td><a href="https://onedrive.live.com/download?resid=ADDED4FD84D96960%21251">x86 </a> |<a href="https://onedrive.live.com/download?resid=ADDED4FD84D96960%21250"> x64 </a></td>
   </tr>
 </table>
-
-
-<br/>
+---------------------------------------------------------------------------------------------------------------
 **Thanks and Regards,**
 <br/>
 Rohith Rajan & Amit Tripathi
-
-
 	
-
-
