@@ -10,7 +10,7 @@ This article provides an introduction to StackTracer for developers and system/s
 * How to analyze the trace files and find the root cause of issue
 
 #What is StackTracer
--------------------------------
+
 
 A tool that captures and analyzes stack trace samples captured at fixed intervals from any .net CLR process.
 
