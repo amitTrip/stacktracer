@@ -134,6 +134,7 @@
   <ItemGroup>
     <EmbeddedResource Include="bin\Debug\stacktrace.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

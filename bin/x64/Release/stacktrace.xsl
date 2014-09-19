@@ -514,7 +514,7 @@ body {
       top: 31px;
       text-align: right;
       margin-right: 40px;
-      font-size: 30px;
+      font-size: 16px;
       line-height: 1.3;
       font-weight: 600; }
       .timeline .timeline-row .timeline-time small {
@@ -522,7 +522,7 @@ body {
         color: white;
         text-transform: uppercase;
         opacity: 0.75;
-        font-size: 20px;
+        font-size: 11px;
         font-weight: 400; }
     .timeline .timeline-row .timeline-icon {
       position: absolute;
@@ -543,7 +543,6 @@ body {
       .timeline .timeline-row .timeline-icon > div {
         border-radius: 50%;
         line-height: 34px;
-        cursor: pointer;
         font-size: 16px; }
     .timeline .timeline-row .timeline-content {
       margin-left: 40px;
@@ -667,11 +666,6 @@ body {
 {
 list-style:none;
 }
-.stacktrace li
-{
-font-size: 13px;
-
-}
      
        ]]></xsl:text>
 </style>
@@ -699,11 +693,11 @@ font-size: 13px;
             </h2>
           </div>
           <div class="container">
-            <table class="table table-striped table-responsive hide">
-              <th>
+            <table class="table table-striped">
+              <tr>
                 <td>Number of Threads#</td>
                 <td>TimeStamp(of samples)</td>
-              </th>
+              </tr>
               
             <xsl:for-each select="./StackTracer/sampleCollection/StackSample">
               <xsl:call-template name="SampleSummary"></xsl:call-template>
@@ -712,14 +706,14 @@ font-size: 13px;
             </table>
             <br/>
             <br/>
-            <table class="table table-striped hide">
-              <th>
+            <table class="table table-striped">
+              <tr>
                 <td>Sample#</td>
                 <td>CLR Thread Num</td>
                 <td>OS Thread#</td>                
                 <td>TimeStamp</td>
                 <td>Current CLR Method</td>
-              </th>
+              </tr>
               <xsl:for-each select="./StackTracer/sampleCollection/StackSample">
                 
                     <xsl:call-template name="SampleDetails"></xsl:call-template>
@@ -727,24 +721,6 @@ font-size: 13px;
               </xsl:for-each>             
             </table>
           </div>
-          <div class="container">
-            <div class="alert alert-info" role="alert">
-              <strong>Heads up! </strong> We have collected <strong>
-                <xsl:value-of select="count(./StackTracer/sampleCollection/StackSample)"/>
-              </strong> samples and a total of <strong>
-                <xsl:value-of select="count(./StackTracer/sampleCollection/StackSample/processThreadCollection/Thread)"/>
-              </strong> thread stacks .
-              The timeline view below shows only stacks of CLR threads available,no native stack information is shown.    
-              <ul>
-                <li>
-                  <strong>click</strong> on the filter <i class="fa fa-filter"></i> icon on the time node to show only thread stacks of same thread(matching OSID) from each sample.
-                </li>
-                <li>Click again on any threads filter icon to get back all the threads</li>
-              </ul>   
-
-            </div>
-          </div>
-         
           <div class="timeline animated">
       <xsl:call-template name="StackTraceDetailsAnim"/>
           </div>
@@ -806,37 +782,32 @@ function nodeClick()
     
         <xsl:for-each select="./processThreadCollection/Thread">
           <xsl:if test="count(./stackTrace/StackFrame) &gt; 0">
-            <xsl:if test="count(./stackTrace/StackFrame) != 1 or string(./stackTrace/StackFrame[1]/clrMethodString) != 'NULL'">                  
+            
             <div class="timeline-row">
               <xsl:attribute name="data-osid"><xsl:value-of select="./oSID"/></xsl:attribute>
         <div class="timeline-time">
-          <small>OS Thread # <xsl:value-of select="./oSID"/>  </small><xsl:value-of select="substring(./sampleCaptureTime,12,12)"/>
+          <small>Thread <xsl:value-of select="./oSID"/> </small><xsl:value-of select="substring(./sampleCaptureTime,12,12)"/>
         </div>
-        <div class="timeline-icon" data-hidden="0" title="click here to show only this thread from all the samples" >
+        <div class="timeline-icon" data-hidden="0" >
           <xsl:attribute name="data-osid"><xsl:value-of select="./oSID"/></xsl:attribute>
           <div class="bg-primary">            
-            <i class="fa fa-filter"></i>
+            <i class="fa fa-pencil"></i>
           </div>
-        </div>              
+        </div>
         <div class="panel timeline-content">
           <div class="panel-body">
-            <ol class="breadcrumb">
+            <h2>
               <xsl:attribute name="id">Stack<xsl:value-of select="../../sampleCounter"/>
               <xsl:value-of select="./oSID"/>
           </xsl:attribute>
-              <xsl:text xml:space="preserve">Stack of thread </xsl:text>
-            
-            <span class="badge"><xsl:value-of select="./managedThreadId"/></span>
-          <xsl:text xml:space="preserve"> (OS#</xsl:text>
-            <xsl:value-of select="./oSID"/>
-              <xsl:text xml:space="preserve"> ) </xsl:text>
-          <xsl:text xml:space="preserve">from Sample </xsl:text>
-            <span class="badge">
+          <xsl:text xml:space="preserve">Thread stack of #  </xsl:text>
+            <b><xsl:value-of select="./oSID"/></b>
+          <xsl:text xml:space="preserve"> of sample </xsl:text>
+            <b>
               <xsl:value-of select="../../sampleCounter"/>
-            </span>
-          <!--Time Stamp: <span class="badge"><xsl:value-of select="substring(./sampleCaptureTime,12,12)"/></span>-->
-            </ol>
-            <div class="well">
+            </b>
+          Time Stamp: <xsl:value-of select="substring(./sampleCaptureTime,12,12)"/>
+            </h2>
             <ul class="stacktrace">
               <xsl:attribute name="data-osid">trace<xsl:value-of select="./oSID"/></xsl:attribute>
             <xsl:for-each select="./stackTrace/StackFrame">
@@ -845,12 +816,9 @@ function nodeClick()
             </li>
              </xsl:for-each>
           </ul>
-            </div>
           </div>
         </div>
       </div>
-          </xsl:if> 
-          
             </xsl:if>
           </xsl:for-each>
       
@@ -892,7 +860,7 @@ function nodeClick()
     </xsl:for-each>    
   </xsl:template>
   <xsl:template name="SampleSummary">
-    <tr >      
+    <tr>      
       <td>        
         <xsl:value-of select="count(./processThreadCollection/Thread)"/>
       </td>
@@ -906,7 +874,7 @@ function nodeClick()
     <div>
       <ul>
         <xsl:for-each select="./processThreadCollection/Thread">
-          <xsl:if test="count(./stackTrace/StackFrame) &gt; 1">
+          <xsl:if test="count(./stackTrace/StackFrame) &gt; 0">
         <li>
           <h3>
             <xsl:attribute name="id">Stack<xsl:value-of select="../../sampleCounter"/>

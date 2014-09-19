@@ -693,11 +693,11 @@ list-style:none;
             </h2>
           </div>
           <div class="container">
-            <table class="table table-striped">
-              <tr>
+            <table class="table table-striped table-responsive hide">
+              <th>
                 <td>Number of Threads#</td>
                 <td>TimeStamp(of samples)</td>
-              </tr>
+              </th>
               
             <xsl:for-each select="./StackTracer/sampleCollection/StackSample">
               <xsl:call-template name="SampleSummary"></xsl:call-template>
@@ -706,14 +706,14 @@ list-style:none;
             </table>
             <br/>
             <br/>
-            <table class="table table-striped">
-              <tr>
+            <table class="table table-striped hide">
+              <th>
                 <td>Sample#</td>
                 <td>CLR Thread Num</td>
                 <td>OS Thread#</td>                
                 <td>TimeStamp</td>
                 <td>Current CLR Method</td>
-              </tr>
+              </th>
               <xsl:for-each select="./StackTracer/sampleCollection/StackSample">
                 
                     <xsl:call-template name="SampleDetails"></xsl:call-template>
@@ -791,7 +791,7 @@ function nodeClick()
         <div class="timeline-icon" data-hidden="0" >
           <xsl:attribute name="data-osid"><xsl:value-of select="./oSID"/></xsl:attribute>
           <div class="bg-primary">            
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-filter"></i>
           </div>
         </div>
         <div class="panel timeline-content">
@@ -860,7 +860,7 @@ function nodeClick()
     </xsl:for-each>    
   </xsl:template>
   <xsl:template name="SampleSummary">
-    <tr>      
+    <tr >      
       <td>        
         <xsl:value-of select="count(./processThreadCollection/Thread)"/>
       </td>
@@ -874,7 +874,7 @@ function nodeClick()
     <div>
       <ul>
         <xsl:for-each select="./processThreadCollection/Thread">
-          <xsl:if test="count(./stackTrace/StackFrame) &gt; 0">
+          <xsl:if test="count(./stackTrace/StackFrame) &gt; 1">
         <li>
           <h3>
             <xsl:attribute name="id">Stack<xsl:value-of select="../../sampleCounter"/>

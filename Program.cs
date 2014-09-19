@@ -9,6 +9,8 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Xml;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Security;
 
 namespace StackTracer
 { 
@@ -81,9 +83,34 @@ namespace StackTracer
         // get this from clrmethod - GetFullSignature()
         public string clrMethodString { get; set; }
         public ulong stackPointer { get; set; }          
-    }    
+    }
+    public static class Algorithms
+    {
+        public static readonly HashAlgorithm MD5 = new MD5CryptoServiceProvider();
+        //public static readonly HashAlgorithm SHA1 = new SHA1Managed();
+        //public static readonly HashAlgorithm SHA256 = new SHA256Managed();
+        //public static readonly HashAlgorithm SHA384 = new SHA384Managed();
+        //public static readonly HashAlgorithm SHA512 = new SHA512Managed();
+        //public static readonly HashAlgorithm RIPEMD160 = new RIPEMD160Managed();
+        
+
+        public static string GetChecksum(string filePath, HashAlgorithm algorithm)
+        {
+            using (var stream = new BufferedStream(File.OpenRead(filePath), 100000))
+            {
+                return GetChecksum(algorithm, stream);
+            }
+        }
+
+        public static string GetChecksum(HashAlgorithm algorithm, Stream stream)
+        {
+            byte[] hash = algorithm.ComputeHash(stream);
+            return BitConverter.ToString(hash).Replace("-", String.Empty);
+        }
+    }
     class Program
     {
+        private static bool FileHashChecked = false;
         /// <summary>
         /// ParseState Enum is used to define the states for the parsing the console arguments
         /// </summary>
@@ -108,10 +135,12 @@ namespace StackTracer
             Console.WriteLine("Example: stacktracer w3wp /d 10 /s 60 /i 500");
             Console.WriteLine("Wait for 10 seconds to take 60  stacktrace samples for w3wp process...");
             Console.WriteLine("..where you are taking one stacktrace sample in every 500 milliseconds");
-          //  Console.Read();
+            Console.Read();
         }
+        
        static void Main(string[] args)
         {
+            
             StringBuilder StackTracerLogger = new StringBuilder();
             var state = ParseState.Unknown;
            try
@@ -128,6 +157,8 @@ namespace StackTracer
 
                // Getting the parameters inatilized 
                 #region Region for setting the console parameters switches   
+
+               //if no arguments are paased ,show help menu
                if (args.ToList<string>().Count != 0)
                 {
                 foreach (var arg in args.Skip(1))
@@ -186,13 +217,10 @@ namespace StackTracer
                             break;
                     }
                 }                          
-                try
-                {
-                   Pid = int.Parse(args[0]);
-                }
-                catch
-                {
-                   
+               
+            //if the first argument is pid,parse it ,otherwise take it as process name.
+              if (!int.TryParse(args[0],out Pid))
+	                {                  
 
                     if (args[0] != null && args[0].Length != 0)
                     {
@@ -223,10 +251,11 @@ namespace StackTracer
                 #endregion
                 if (state != ParseState.Help)
                {
-                  if (processName == "")
+                  if (string.IsNullOrEmpty(processName))
                        pid = Pid;
                    try
                    {
+                       //get the process with process names
                        pid = Process.GetProcessesByName(processName)[0].Id;
                    }
                    catch (Exception Ex)
@@ -245,13 +274,13 @@ namespace StackTracer
                                Console.WriteLine("Process with PID {0} Doesn't Exist", pid);
                            }
                        }
-                       StackTracerLogger.AppendLine("Process with name"+ processName + " Doesn't Exist");
+                       StackTracerLogger.AppendLine("Process with name"+ processName + " doesn't exist");
                        throw;
                       
                    }
-                   if (Process.GetProcessesByName(processName).ToList().Count() == 1 )
+                   if (Process.GetProcessesByName(processName).Length==1)
                    {
-                       Console.WriteLine("Initiating the StackTrace Collection after {0} Seconds....", pdelay);
+                       Console.WriteLine("Initiating the stacktrace capture after {0} seconds....", pdelay);
                        
                        System.Threading.Thread.Sleep(pdelay * 1000);
  
@@ -263,8 +292,8 @@ namespace StackTracer
 
                        for (int i = 0; i < stackTraceCount; i++)
                        {
-                           Console.WriteLine("Collecting the sample number : {0} ", i);
-                           StackTracerLogger.AppendLine("Collecting the sample number  : "+ i);
+                           Console.WriteLine("Collecting sample # {0} ", i);
+                           StackTracerLogger.AppendLine("Collecting sample # "+ i);
                            // Instanting all the datastrcture to hold the 
                            //stactrace sample objects for each sample
                            StackSample stackTracerProcessobj = new StackSample();
@@ -285,7 +314,7 @@ namespace StackTracer
                                }
                                catch
                                {
-                                   Console.WriteLine("Bitness of process mismatched or process is native");
+                                   Console.WriteLine("Bitness of process mismatched or process does not have CLR loaded");
                                    Console.WriteLine("Select StackTrace_x86 for 32 bit .NET process");
                                    Console.WriteLine("Select StackTrace_x64 for 64 bit .NET process");
                                    StackTracerLogger.AppendLine("Bitness of process mismatched or process is native");
@@ -326,9 +355,9 @@ namespace StackTracer
                        stackTracer.sampleCollection = stackSampleCollection;
                        Type testype = stackTracer.GetType();
                        //Calling function to serialize the stacktracer object.
-                       objectSeralizer(stacktraceLocation, testype, stackTracer);
+                       ObjectSeralizer(stacktraceLocation, testype, stackTracer);
                        StackTracerLogger.AppendLine();
-                   }
+                   }                  
                    else
                    {
                        Console.WriteLine("There are multiple process instances with selected process name  :  {0}",processName);
@@ -357,21 +386,33 @@ namespace StackTracer
                 
             }
         }        
-       public static void objectSeralizer(String filePath, Type OjectType, object Object)
+       public static void ObjectSeralizer(String filePath, Type OjectType, object Object)
         {
              //Sample to get the file from the resource. 
              //Check if stacktrace.xsl already exixt in filepath location
-             string tempfilepath = (System.Reflection.Assembly.GetExecutingAssembly().Location).Replace(Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),"")+ "stacktrace.xsl";      
+             string tempfilepath = (System.Reflection.Assembly.GetExecutingAssembly().Location).Replace(Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),"")+ "stacktrace.xsl";
+
+             Stream _textStreamReader = GetXSLFromAssembly();
 
             if (!File.Exists(tempfilepath))
             {
-               Assembly _assembly = Assembly.GetExecutingAssembly();
-               Stream _textStreamReader = _assembly.GetManifestResourceStream("StackTracer.bin.Debug.stacktrace.xsl");
+                
                using (Stream s = File.Create(tempfilepath))
                {
                   _textStreamReader.CopyTo(s);
                }
                
+            }
+            else
+            {
+
+                if (!FileHashChecked && Algorithms.GetChecksum(Algorithms.MD5,_textStreamReader)!=Algorithms.GetChecksum(tempfilepath,Algorithms.MD5))
+                {
+                    using (Stream s = File.Create(tempfilepath))
+                    {
+                        _textStreamReader.CopyTo(s);
+                    }
+                }
             }
            
            //  Code to seralize the oject.
@@ -391,7 +432,14 @@ namespace StackTracer
                             Console.WriteLine("StackTace Report Generated at the path :");
                             Console.WriteLine( stacktraceLocation);
                             // Console.Read();          
-        }              
+        }
+
+       private static Stream GetXSLFromAssembly()
+       {
+           Assembly _assembly = Assembly.GetExecutingAssembly();
+           Stream _textStreamReader = _assembly.GetManifestResourceStream("StackTracer.bin.Debug.stacktrace.xsl");
+           return _textStreamReader;
+       }              
     }
 }
 

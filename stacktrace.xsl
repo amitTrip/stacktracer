@@ -699,9 +699,9 @@ list-style:none;
                 <td>TimeStamp(of samples)</td>
               </tr>
               
-            <xsl:for-each select="./StackTracer/sampleCollection/StackSample">
+            <!--<xsl:for-each select="./StackTracer/sampleCollection/StackSample">
               <xsl:call-template name="SampleSummary"></xsl:call-template>
-            </xsl:for-each>
+            </xsl:for-each>-->
               
             </table>
             <br/>
@@ -791,7 +791,7 @@ function nodeClick()
         <div class="timeline-icon" data-hidden="0" >
           <xsl:attribute name="data-osid"><xsl:value-of select="./oSID"/></xsl:attribute>
           <div class="bg-primary">            
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-filter" title="click here to show only this thread from all the samples"></i>
           </div>
         </div>
         <div class="panel timeline-content">
